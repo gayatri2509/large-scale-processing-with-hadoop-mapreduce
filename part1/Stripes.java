@@ -52,7 +52,7 @@ public static class StripesReducer extends Reducer<Text, myMapWritable, Text, my
 
 	@Override
 	public void reduce(Text key, Iterable<myMapWritable> values, Context context) throws IOException, InterruptedException {
-		 myMapWritable finalCountMap = new myMapWritable();
+	     myMapWritable finalCountMap = new myMapWritable();
 		 
 	     Iterator<myMapWritable> valuesIterator = values.iterator();
 	     while(valuesIterator.hasNext()){
