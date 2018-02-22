@@ -1,5 +1,3 @@
-
-
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
@@ -78,14 +76,11 @@ public static class PairsReducer extends Reducer<WordPair,IntWritable,WordPair,I
  }
 
 
- 
-
 	public static void main(String[] args) throws Exception {
 	    Configuration conf = new Configuration();
 	    Job job = Job.getInstance(conf, "word cooccurrence pairs");
 	    job.setJarByClass(Pairs.class);
 	    job.setMapperClass(PairsMapper.class);
-	    //job.setCombinerClass(IntSumReducer.class);
 	    job.setReducerClass(PairsReducer.class);
 	    job.setOutputKeyClass(WordPair.class);
 	    job.setOutputValueClass(IntWritable.class);
