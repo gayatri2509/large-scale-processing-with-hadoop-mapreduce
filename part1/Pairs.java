@@ -64,8 +64,8 @@ public static class PairsMapper extends Mapper<LongWritable, Text, WordPair, Int
 public static class PairsReducer extends Reducer<WordPair,IntWritable,WordPair,IntWritable> {
 	 @Override
 	 public void reduce(WordPair key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
-		 int count = 0;
-		 java.util.Iterator<IntWritable> valuesIterator = values.iterator();
+	     int count = 0;
+	     java.util.Iterator<IntWritable> valuesIterator = values.iterator();
 	     while(valuesIterator.hasNext()){
 	    	 count += valuesIterator.next().get();
 	     }
