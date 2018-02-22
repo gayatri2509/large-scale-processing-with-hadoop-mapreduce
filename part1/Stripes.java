@@ -23,7 +23,7 @@ public static class StripesMapper extends Mapper<LongWritable,Text,Text,myMapWri
 	  @Override
 	  public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 		  String line = value.toString();
-		  if(line!=null){
+		  if(line != null){
 			  String[] words=line.split("\\s+");
 			  for(int i=0; i< words.length-1; i++ )
 			  {
@@ -54,9 +54,9 @@ public static class StripesReducer extends Reducer<Text, myMapWritable, Text, my
 	public void reduce(Text key, Iterable<myMapWritable> values, Context context) throws IOException, InterruptedException {
 		 myMapWritable finalCountMap = new myMapWritable();
 		 
-		 Iterator<myMapWritable> valuesIterator = values.iterator();
+	     Iterator<myMapWritable> valuesIterator = values.iterator();
 	     while(valuesIterator.hasNext()){
-		     myMapWritable  valuesMap = new myMapWritable();
+		 myMapWritable  valuesMap = new myMapWritable();
 	    	 valuesMap = valuesIterator.next();
 	    	 Set<Writable> keys = valuesMap.keySet();
 	    	 for (Writable neighbor : keys) {
@@ -70,8 +70,7 @@ public static class StripesReducer extends Reducer<Text, myMapWritable, Text, my
 	    		 }
 	    		 else{
 	    			 finalCountMap.put(neighbor, count);
-	    		 }
-	    		 
+	    		 }	 
 	    	 }
 	     }	     
 	     context.write(key, finalCountMap);
